@@ -1,10 +1,36 @@
 # Async-Inn
 
-## Ola M AL-Shlool / 13-4-2022
+## Ola M AL-Shlool / 13-4-2022 / 18-4-2022
 
 This project uses ASP.Net Core framework to implement a simple web app following the MVC pattern.
 
 ## ERD Diagram
+![ERD Diagram](assets/async-inn-erd.png)
+## Explanation of ERD Diagram
+- ### Hotel
+    Locations is a class which holds the properties Name, City, State, Address, and PhoneNumber. All of these are VarChar except ID, which is an int.
+
+Connected to HotelRoom.
+
+- ### HotelRoom
+    Has composite Foreign Key or HotelID and RoomID, and create a composite key called RoomNumber. It has the properties of Rate(decimal) and PetFriendly(bit).
+
+    Connected to Hotel/Room.
+
+- ### Room
+    Has an ID, Name(string) and Layout(int). Layout receives data from a connected enum list.
+
+    Is connected to Layout/RoomAmenities.
+
+- ### Layout
+    List of three room type: Studio, OneBedroom, and TwoBedroom. Connects to Room and nothing else.
+
+- ### RoomAmenities
+    Feeds into Room. and receives its ID. Also receives Amenities ID.
+
+- ### Amenity
+    Simple class with just an ID and a Name property.
+
 
 ![ERD Diagram](assets/Diagram.png)
 
