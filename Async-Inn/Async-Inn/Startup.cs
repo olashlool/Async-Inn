@@ -1,4 +1,6 @@
 using Async_Inn.Data;
+using Async_Inn.Models.Interface;
+using Async_Inn.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,6 +31,9 @@ namespace Async_Inn
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
+            services.AddTransient<IHotel, HotelService>();
+            services.AddTransient<IRoom, RoomService>();
+            services.AddTransient<IAmenity, AmenityService>();
             services.AddControllers();
 
         }
