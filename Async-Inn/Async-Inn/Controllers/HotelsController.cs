@@ -35,6 +35,10 @@ namespace Async_Inn.Controllers
         public async Task<ActionResult<Hotel>> GetHotel(int id)
         {
             var hotel = await _hotel.GetHotel(id);
+            if (hotel == null)
+            {
+                return NotFound();
+            }
             return hotel;
         }
 

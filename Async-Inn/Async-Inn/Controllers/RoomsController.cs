@@ -36,6 +36,10 @@ namespace Async_Inn.Controllers
         public async Task<ActionResult<Room>> GetRoom(int id)
         {
             var room = await _room.GetRoom(id);
+            if (room == null)
+            {
+                return NotFound();
+            }
             return room;
         }
 
@@ -61,7 +65,14 @@ namespace Async_Inn.Controllers
             Room newRoom = await _room.Create(room);
             return Ok(newRoom);
         }
-
+        //POST AMENITY:
+        [HttpPost]
+        [Route("{roomId}/Amenity/{amenityId}")]
+        public async Task<IActionResult> AddRoomAmenity(int roomId, int amenityId)
+        {
+            await _room.AddAmenityToRoom(roomId, amenityId);
+            return NoContent();
+        }
         // DELETE: api/Rooms/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoom(int id)
@@ -69,6 +80,13 @@ namespace Async_Inn.Controllers
             await _room.Delete(id);
             return NoContent();
         }
-   
+        //Delete Amenity:
+        [HttpDelete("{id}")]
+        [Route("{roomId}/{amenityId}")]
+        public async Task<IActionResult> RemoveAmenityFromRoom(int roomId, int amenityId)
+        {
+            await _room.RemoveAmentityFromRoom(roomId, amenityId);
+            return NoContent();
+        }
     }
 }

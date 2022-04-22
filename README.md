@@ -1,8 +1,39 @@
 # Async-Inn
 
-## Ola M AL-Shlool / 13-4-2022 / 18-4-2022
+## Ola M AL-Shlool / 13-4-2022 / 18-4-2022 / 20-4-2022 / 22-4-2022
 
 This project uses ASP.Net Core framework to implement a simple web app following the MVC pattern.
+
+## API Routes
+- #### Hotel Routes: 
+  - GET: api/Hotels - Get a list of all hotels
+  - GET: api/Hotels/{hotelId} - Get a hotel by ID
+  - PUT: api/Hotels/{hotelId} - Update a hotel by ID
+  - POST: api/Hotels - Create a new hotel
+  - DELETE: api/Hotels/{hotelId} - Delete a hotel
+
+- #### Rooms Routes
+  - GET: api/Rooms - Get a list of all rooms
+  - GET: api/Rooms/{id} - Get a room by ID
+  - PUT: api/Rooms/{id} - Update a room by ID
+  - POST: api/Rooms - Create a new room
+  - POST: {roomId}/Amenity/{amenityId} - Add an amenity to a room
+  - DELETE: {roomId}/{amenityId} - Delete an amenity from a room
+  - DELETE: {roomId} - Delete a room
+
+- #### HotelRoom Routes: 
+  - GET: api/HotelRooms - Get a list of all hotelRooms
+  - GET: api/HotelRooms/{hotelId}/Rooms/{roomNumber} - Get a hotelRooms by ID
+  - PUT: api/HotelRooms/{hotelId}/Rooms/{roomNumber} - Update a hotelRooms by ID
+  - POST: api/HotelRooms/"{hotelId}/Rooms - Create a new hotelRooms
+  - DELETE: api/HotelRooms/{hotelId}/Rooms/{roomNumber} - Delete a hotelRooms
+
+- ### Amenities Routes
+  - GET: api/Amenities - Get a list of all amenities
+  - GET: api/Amenities/{id} - Get an amenity by ID
+  - PUT: api/Amenities/{id} - Update an amenity by ID
+  - POST: api/Amenities - Create a new amenity
+  - DELETE: api/Amenities/{id} - Delete an amenity by ID
 
 ## ERD Diagram
 ![ERD Diagram](assets/async-inn-erd.png)
