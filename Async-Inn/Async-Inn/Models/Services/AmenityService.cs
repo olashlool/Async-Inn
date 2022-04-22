@@ -30,14 +30,18 @@ namespace Async_Inn.Models.Services
 
         public async Task<List<Amenity>> GetAmenities()
         {
-            var amenities = await _context.Amenities.ToListAsync();
-                return amenities;
-;        }
+            return await _context.Amenities.Include(x => x.RoomAmenity)
+                                           .ThenInclude(x => x.Room)
+                                           .ToListAsync();
+        }
 
         public async Task<Amenity> GetAmenity(int id)
         {
-            Amenity amenity = await _context.Amenities.FindAsync(id);
-            return amenity;
+            // Include all Rooms in Amenity  
+
+            return await _context.Amenities.Include(x => x.RoomAmenity)
+                                           .ThenInclude(x => x.Room)
+                                           .FirstOrDefaultAsync(x => x.ID == id);
         }
 
         public async Task<Amenity> UpdateAmenity(int id, Amenity amenity)

@@ -35,6 +35,10 @@ namespace Async_Inn.Controllers
         public async Task<ActionResult<Amenity>> GetAmenity(int id)
         {
             var amenity = await _amenity.GetAmenity(id);
+            if (amenity == null)
+            {
+                return NotFound();
+            }
             return amenity;
         }
 

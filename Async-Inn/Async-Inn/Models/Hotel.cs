@@ -14,5 +14,7 @@ namespace Async_Inn.Models
         public string State { get; set; }
         public string Country { get; set; }
         public string Phone { get; set; }
+        // Navigation Properties
+        public List<HotelRoom> HotelRoom { get; set; }
     }
 }

@@ -12,7 +12,9 @@ namespace Async_Inn.Data
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Amenity> Amenities { get; set; }
-
+        public DbSet<HotelRoom> HotelRoom { get; set; }
+        public DbSet<RoomAmenity> RoomAmenity { get; set; }
+       
         public AsyncInnDbContext(DbContextOptions options) : base(options)
         {
 
@@ -88,6 +90,11 @@ namespace Async_Inn.Data
                     Name = "Mini bar"
                 }
                 );
+            modelBuilder.Entity<RoomAmenity>()
+                  .HasKey(RoomAmenity => new { RoomAmenity.RoomID, RoomAmenity.AmenitiesID });
+
+            modelBuilder.Entity<HotelRoom>()
+                        .HasKey(HotelRoomNumber => new { HotelRoomNumber.HotelID, HotelRoomNumber.RoomNumber });
         }
     }
 }
