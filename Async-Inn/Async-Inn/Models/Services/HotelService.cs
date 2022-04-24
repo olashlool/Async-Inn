@@ -46,6 +46,14 @@ namespace Async_Inn.Models.Services
                                              .ToListAsync();
         }
 
+        public Task<List<Hotel>> SearchByName(string term)
+        {
+            var result = _context.Hotels.Include(x => x.HotelRoom)
+                                        .Where(x => x.Name.Contains(term))
+                                        .ToListAsync();
+            return result;
+        }
+
         public async Task<Hotel> UpdateHotel(int id, Hotel hotel)
         {
             _context.Entry(hotel).State = EntityState.Modified;
