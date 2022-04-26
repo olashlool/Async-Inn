@@ -31,6 +31,7 @@ namespace Async_Inn.Models.Services
 
         public async Task<HotelRoom> GetHotelRoom(int hotelId, int roomNumber)
         {
+            
             return await _context.HotelRoom.Include(x => x.Room)
                                                     .ThenInclude(x => x.RoomAmenity)
                                                     .ThenInclude(x => x.Amenity)
