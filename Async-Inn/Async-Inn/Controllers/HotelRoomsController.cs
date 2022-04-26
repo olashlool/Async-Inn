@@ -23,14 +23,15 @@ namespace Async_Inn.Controllers
         }
 
         // GET: api/HotelRooms
-        [HttpGet("{hotelId}/Rooms")]
+        //[HttpGet("{hotelId}/Rooms")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<HotelRoom>>> GetHotelRoom()
         {
             return Ok(await _hotelRoom.GetHotelRooms());
         }
 
         // GET: api/HotelRooms/5
-        [HttpGet("{hotelId}/Rooms/{roomNumber}")]
+        [HttpGet("{hotelId}/{roomNumber}")]
         public async Task<ActionResult<HotelRoom>> GetHotelRoom(int hotelID , int roomNumber)
         {
             var hotelRoom = await _hotelRoom.GetHotelRoom(hotelID, roomNumber);
@@ -43,7 +44,7 @@ namespace Async_Inn.Controllers
 
         // PUT: api/HotelRooms/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{hotelId}/Rooms/{roomNumber}")]
+        [HttpPut("{hotelId}/{roomNumber}")]
         public async Task<IActionResult> PutHotelRoom(int hotelID, int roomNumber, HotelRoom hotelRoom)
         {
             if (hotelID != hotelRoom.HotelID && roomNumber != hotelRoom.RoomNumber)
@@ -57,7 +58,7 @@ namespace Async_Inn.Controllers
 
         // POST: api/HotelRooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("{hotelId}/Rooms")]
+        [HttpPost]
         public async Task<ActionResult<HotelRoom>> PostHotelRoom(HotelRoom hotelRoom)
         {
             HotelRoom newHotelRoom = await _hotelRoom.Create(hotelRoom);
@@ -66,7 +67,7 @@ namespace Async_Inn.Controllers
         }
 
         // DELETE: api/HotelRooms/5
-        [HttpDelete("{hotelId}/Rooms/{roomNumber}")]
+        [HttpDelete("{hotelId}/{roomNumber}")]
         public async Task<IActionResult> DeleteHotelRoom(int hotelID, int roomNumber)
         {
             await _hotelRoom.Delete(hotelID, roomNumber);
