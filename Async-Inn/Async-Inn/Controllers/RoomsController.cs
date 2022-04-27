@@ -8,10 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Async_Inn.Data;
 using Async_Inn.Models;
 using Async_Inn.Models.Interface;
+using Async_Inn.Models.DTOs;
 
 namespace Async_Inn.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/rooms")]
     [ApiController]
     public class RoomsController : ControllerBase
     {
@@ -24,7 +25,7 @@ namespace Async_Inn.Controllers
 
         // GET: api/Rooms
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Room>>> GetRooms()
+        public async Task<ActionResult<IEnumerable<RoomDTO>>> GetRooms()
         {
             var list = await _room.GetRooms();
             return Ok(list);
@@ -33,7 +34,7 @@ namespace Async_Inn.Controllers
 
         // GET: api/Rooms/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Room>> GetRoom(int id)
+        public async Task<ActionResult<RoomDTO>> GetRoom(int id)
         {
             var room = await _room.GetRoom(id);
             if (room == null)
@@ -46,7 +47,7 @@ namespace Async_Inn.Controllers
         // PUT: api/Rooms/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRoom(int id, Room room)
+        public async Task<IActionResult> PutRoom(int id, RoomDTO room)
         {
             if (id != room.ID)
             {
@@ -60,9 +61,9 @@ namespace Async_Inn.Controllers
         // POST: api/Rooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Room>> PostRoom(Room room)
+        public async Task<ActionResult<Room>> PostRoom(RoomDTO room)
         {
-            Room newRoom = await _room.Create(room);
+            var newRoom = await _room.Create(room);
             return Ok(newRoom);
         }
         //POST AMENITY:

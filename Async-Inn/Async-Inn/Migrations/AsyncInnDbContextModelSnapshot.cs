@@ -143,8 +143,8 @@ namespace Async_Inn.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Layout")
-                        .HasColumnType("int");
+                    b.Property<string>("Layout")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -157,19 +157,19 @@ namespace Async_Inn.Migrations
                         new
                         {
                             ID = 1,
-                            Layout = 0,
+                            Layout = "0",
                             Name = "Studio"
                         },
                         new
                         {
                             ID = 2,
-                            Layout = 1,
+                            Layout = "1",
                             Name = "One Bedroom"
                         },
                         new
                         {
                             ID = 3,
-                            Layout = 2,
+                            Layout = "2",
                             Name = "Two Bedroom"
                         });
                 });

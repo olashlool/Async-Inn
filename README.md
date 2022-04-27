@@ -1,15 +1,8 @@
 # Async-Inn
 
-
 ## Ola M AL-Shlool / 13-4-2022 / 18-4-2022 / 20-4-2022 / 22-4-2022
 
 This project uses ASP.Net Core framework to implement a simple web app following the MVC pattern.
-
-## How do you run the program?
-
-1. Clone repo to your device.
-2. Open the solution file Async-Inn.sln in Visual Studio.
-3. To run the app, go to Debug > Start Without Debugging (or press ctrl+F5).
 
 ## API Routes
 - #### Hotel Routes: 
