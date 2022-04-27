@@ -22,11 +22,11 @@ This project uses ASP.Net Core framework to implement a simple web app following
   - DELETE: {roomId} - Delete a room
 
 - #### HotelRoom Routes: 
-  - GET: api/HotelRooms - Get a list of all hotelRooms
-  - GET: api/HotelRooms/{hotelId}/Rooms/{roomNumber} - Get a hotelRooms by ID
-  - PUT: api/HotelRooms/{hotelId}/Rooms/{roomNumber} - Update a hotelRooms by ID
-  - POST: api/HotelRooms/"{hotelId}/Rooms - Create a new hotelRooms
-  - DELETE: api/HotelRooms/{hotelId}/Rooms/{roomNumber} - Delete a hotelRooms
+  - GET: /api/Hotels/{hotelId}/Rooms - Get a list of all hotelRooms
+  - GET: /api/Hotels/{hotelId}/Rooms/{roomNumber} - Get a hotelRooms by ID
+  - PUT: /api/Hotels/{hotelId}/Rooms/{roomNumber} - Update a hotelRooms by ID
+  - POST: /api/Hotels/{hotelId}/Rooms - Create a new hotelRooms
+  - DELETE: /api/Hotels/{hotelId}/Rooms/{roomNumber} - Delete a hotelRooms
 
 - ### Amenities Routes
   - GET: api/Amenities - Get a list of all amenities
