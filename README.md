@@ -1,8 +1,24 @@
 # Async-Inn
 
-## Ola M AL-Shlool / 13-4-2022 / 18-4-2022 / 20-4-2022 / 22-4-2022 / 27-4-2022
+## Ola M AL-Shlool / 13-4-2022 / 18-4-2022 / 20-4-2022 / 22-4-2022 / 27-4-2022 / 8-5-2022
 
 This project uses ASP.Net Core framework to implement a simple web app following the MVC pattern.
+
+## Identity
+- ASP.NET Core Identity is an API that supports user interface login functionality. It manages users, passwords, profile data, roles, claims, tokens, email confirmation, and more.
+
+- Users can create an account with the login information stored in Identity or they can use an external login provider. Supported external login providers include Facebook, Google, Microsoft Account, and Twitter.
+
+- Identity is typically configured using a SQL Server database to store user names, passwords, and profile data. Alternatively, another persistent store can be used, for example, Azure Table Storage.
+
+## Data Transfer Objects (DTOs)
+
+DTOs were implemented in this application in order to better control the data that was exposed to the client through the API.
+
+Specifically, DTOs were used to:
+
+- Flatten object graphs that containe nested objects for client convenience and readability.
+- Hide any properties that should not be public, and avoid "over-posting".
 
 ## API Routes
 - #### Hotel Routes: 
@@ -35,6 +51,10 @@ This project uses ASP.Net Core framework to implement a simple web app following
   - POST: api/Amenities - Create a new amenity
   - DELETE: api/Amenities/{id} - Delete an amenity by ID
 
+- ### Identity Routes:
+  - /Register - Let's you add new user objects to the database
+  - /Login - Retrieves a user inputed object
+  
 ## ERD Diagram
 ![ERD Diagram](assets/async-inn-erd.png)
 ## Explanation of ERD Diagram
