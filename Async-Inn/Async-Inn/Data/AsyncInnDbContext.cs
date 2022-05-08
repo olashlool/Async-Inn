@@ -1,4 +1,5 @@
 ﻿using Async_Inn.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Async_Inn.Data
 {
-    public class AsyncInnDbContext : DbContext
+    public class AsyncInnDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Room> Rooms { get; set; }
@@ -21,6 +22,14 @@ namespace Async_Inn.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<RoomAmenity>()
+                  .HasKey(RoomAmenity => new { RoomAmenity.RoomID, RoomAmenity.AmenityID });
+
+            modelBuilder.Entity<HotelRoom>()
+                        .HasKey(HotelRoomNumber => new { HotelRoomNumber.HotelID, HotelRoomNumber.RoomNumber });
+
             modelBuilder.Entity<Hotel>().HasData(
                 new Hotel
                 {
@@ -90,11 +99,7 @@ namespace Async_Inn.Data
                     Name = "Mini bar"
                 }
                 );
-            modelBuilder.Entity<RoomAmenity>()
-                  .HasKey(RoomAmenity => new { RoomAmenity.RoomID, RoomAmenity.AmenityID });
-
-            modelBuilder.Entity<HotelRoom>()
-                        .HasKey(HotelRoomNumber => new { HotelRoomNumber.HotelID, HotelRoomNumber.RoomNumber });
+            
         }
     }
 }
