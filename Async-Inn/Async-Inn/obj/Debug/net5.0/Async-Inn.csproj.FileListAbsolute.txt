@@ -130,3 +130,8 @@ C:\Users\Ola M AL-Shlool\Desktop\Async-Inn\Async-Inn\Async-Inn\obj\Debug\net5.0\
 C:\Users\Ola M AL-Shlool\Desktop\Async-Inn\Async-Inn\Async-Inn\obj\Debug\net5.0\ref\Async-Inn.dll
 C:\Users\Ola M AL-Shlool\Desktop\Async-Inn\Async-Inn\Async-Inn\obj\Debug\net5.0\Async-Inn.pdb
 C:\Users\Ola M AL-Shlool\Desktop\Async-Inn\Async-Inn\Async-Inn\obj\Debug\net5.0\Async-Inn.genruntimeconfig.cache
+C:\Users\Ola M AL-Shlool\Desktop\Async-Inn\Async-Inn\Async-Inn\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Ola M AL-Shlool\Desktop\Async-Inn\Async-Inn\Async-Inn\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Ola M AL-Shlool\Desktop\Async-Inn\Async-Inn\Async-Inn\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Ola M AL-Shlool\Desktop\Async-Inn\Async-Inn\Async-Inn\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Ola M AL-Shlool\Desktop\Async-Inn\Async-Inn\Async-Inn\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
