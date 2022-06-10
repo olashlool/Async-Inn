@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Async_Inn.Models.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,5 +17,10 @@ namespace Async_Inn.Models
         public string Phone { get; set; }
         // Navigation Properties
         public List<HotelRoom> HotelRoom { get; set; }
+
+        public static implicit operator Hotel(HotelDTO v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

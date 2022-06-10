@@ -73,7 +73,7 @@ namespace Async_Inn.Controllers
             await _hotel.Delete(id);
             return NoContent();
         }
-
+        [HttpGet("Name/{name}")]
         public async Task<IActionResult> Search(string term)
         {
             var books = await _hotel.SearchByName(term);
