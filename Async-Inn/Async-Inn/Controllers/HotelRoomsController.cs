@@ -9,9 +9,11 @@ using Async_Inn.Data;
 using Async_Inn.Models;
 using Async_Inn.Models.Interface;
 using Async_Inn.Models.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Async_Inn.Controllers
 {
+    [Authorize(Roles = "District Manager")]
     [Route("/api/Hotels/{hotelId}/Rooms")]
     [ApiController]
     public class HotelRoomsController : ControllerBase
@@ -24,6 +26,7 @@ namespace Async_Inn.Controllers
         }
 
         // GET: api/HotelRooms
+        [Authorize(Roles = "District Manager, Property Manager, Agent")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HotelRoomDTO>>> GetHotelRoom()
         {
@@ -31,6 +34,7 @@ namespace Async_Inn.Controllers
         }
 
         // GET: api/HotelRooms/5
+        [Authorize(Roles = "District Manager, Property Manager, Agent")]
         [HttpGet("{roomNumber}")]
         public async Task<ActionResult<HotelRoomDTO>> GetHotelRoom(int hotelID , int roomNumber)
         {
@@ -44,6 +48,7 @@ namespace Async_Inn.Controllers
 
         // PUT: api/HotelRooms/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "District Manager, Property Manager, Agent")]
         [HttpPut("{roomNumber}")]
         public async Task<IActionResult> PutHotelRoom(int hotelID, int roomNumber, HotelRoomDTO hotelRoom)
         {
@@ -58,6 +63,7 @@ namespace Async_Inn.Controllers
 
         // POST: api/HotelRooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "District Manager, Property Manager")]
         [HttpPost]
         public async Task<ActionResult<HotelRoomDTO>> PostHotelRoom(HotelRoomDTO hotelRoom)
         {
@@ -67,6 +73,7 @@ namespace Async_Inn.Controllers
         }
 
         // DELETE: api/HotelRooms/5
+        [Authorize(Roles = "District Manager")]
         [HttpDelete("{roomNumber}")]
         public async Task<IActionResult> DeleteHotelRoom(int hotelID, int roomNumber)
         {

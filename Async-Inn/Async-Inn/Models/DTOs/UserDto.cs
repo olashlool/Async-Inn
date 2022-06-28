@@ -9,5 +9,7 @@ namespace Async_Inn.Models.DTOs
     {
         public string Id { get; set; }
         public string Username { get; set; }
+        public string Token { get; set; }
+        public IEnumerable<string> Roles { get; set; }
     }
 }
