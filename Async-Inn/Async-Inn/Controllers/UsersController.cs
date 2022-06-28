@@ -1,5 +1,6 @@
 ﻿using Async_Inn.Models.DTOs;
 using Async_Inn.Models.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,6 +21,7 @@ namespace Async_Inn.Controllers
             _userService = userService;
         }
 
+        [AllowAnonymous]
         [HttpPost("Register")]
          public async Task<ActionResult> Register(RegisterUserDto data)
          {
@@ -39,6 +41,8 @@ namespace Async_Inn.Controllers
                  return BadRequest(e.Message);
              }
          }
+
+        [AllowAnonymous]
         [HttpPost("Login")]
         public async Task<ActionResult<UserDto>> LogIn([FromBody] RegisterUserDto userDto)
         {
@@ -55,6 +59,13 @@ namespace Async_Inn.Controllers
                 return BadRequest(e.Message);
             }
             return Ok(userDto);
+        }
+
+        [Authorize]
+        [HttpGet("me")]
+        public async Task<ActionResult<UserDto>> Me()
+        {
+            return await _userService.GetUser(this.User);
         }
 
     }

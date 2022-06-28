@@ -70,12 +70,6 @@ namespace Async_Inn.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -286,6 +280,36 @@ namespace Async_Inn.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "district manager",
+                            ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
+                            Name = "District Manager",
+                            NormalizedName = "DISTRICT MANAGER"
+                        },
+                        new
+                        {
+                            Id = "property manager",
+                            ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
+                            Name = "Property Manager",
+                            NormalizedName = "PROPERTY MANAGER"
+                        },
+                        new
+                        {
+                            Id = "agent",
+                            ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
+                            Name = "Agent",
+                            NormalizedName = "AGENT"
+                        },
+                        new
+                        {
+                            Id = "guest",
+                            ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
+                            Name = "Guest",
+                            NormalizedName = "GUEST"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

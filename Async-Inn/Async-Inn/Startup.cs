@@ -2,6 +2,7 @@ using Async_Inn.Data;
 using Async_Inn.Models;
 using Async_Inn.Models.Interface;
 using Async_Inn.Models.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -46,6 +47,7 @@ namespace Async_Inn
             services.AddTransient<IAmenity, AmenityService>();
             services.AddTransient<IHotelRoom, HotelRoomService>();
             services.AddTransient<IUserService, IdentityUserService>();
+            services.AddScoped<JwtTokenService>();
 
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>
@@ -61,6 +63,34 @@ namespace Async_Inn
                     Version = "v1",
                 });
             });
+
+            // Add the wiring for adding "Authentication" for our API
+            // "We want the system to always use these "Schemes" to authenticate us
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+              {
+                  // Tell the authenticaion scheme "how/where" to validate the token + secret
+                  options.TokenValidationParameters = JwtTokenService.GetValidationParameters(Configuration);
+              });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("createRoom", policy => policy.RequireClaim("permissions", "createRoom"));
+                options.AddPolicy("updateRoom", policy => policy.RequireClaim("permissions", "updateRoom"));
+                options.AddPolicy("deleteRoom", policy => policy.RequireClaim("permissions", "deleteRoom"));
+
+                options.AddPolicy("createHotel", policy => policy.RequireClaim("permissions", "createHotel"));
+                options.AddPolicy("updateHotel", policy => policy.RequireClaim("permissions", "updateHotel"));
+                options.AddPolicy("deleteHotel", policy => policy.RequireClaim("permissions", "deleteHotel"));
+
+                options.AddPolicy("createAmenity", policy => policy.RequireClaim("permissions", "createAmenity"));
+                options.AddPolicy("updateAmenity", policy => policy.RequireClaim("permissions", "updateAmenity"));
+                options.AddPolicy("deleteAmenity", policy => policy.RequireClaim("permissions", "deleteAmenity"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,6 +102,10 @@ namespace Async_Inn
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseSwagger(options => {
                 options.RouteTemplate = "/api/{documentName}/swagger.json";
             });
